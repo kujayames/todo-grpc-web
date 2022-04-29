@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package todo;
+
+service TodoTracker {
+  rpc CreateTodo(CreateTodoRequest) returns (CreateTodoReply);
+  rpc GetTodo(GetTodoRequest) returns (GetTodoReply);
+}
+
+message Todo {
+  string title = 1;
+  bool is_complete = 2;
+}
+
+message CreateTodoRequest {
+  string title = 1;
+}
+message CreateTodoReply {
+  string todo_id = 1;
+}
+
+message GetTodoRequest {
+  string todo_id = 1;
+}
+message GetTodoReply {
+  Todo todo = 1;
+}
